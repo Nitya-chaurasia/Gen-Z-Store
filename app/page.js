@@ -1,6 +1,6 @@
 import Hero from "@/components/Hero";
-import { NewLaunch, MensCategory, WomensCategory, BestTees } from "@/components/main";
-import ComboTees from "@/components/main/ComboTees";
+import { NewLaunch, MensCategory, WomensCategory, ComboTees } from "@/components/main";
+// import ComboTees from "@/components/main/ComboTees";
 export default function Home() {
   return (
     <main>
