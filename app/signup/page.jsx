@@ -6,7 +6,6 @@ export default function Signup() {
         <h2 className="text-2xl font-bold text-center text-gray-900 mb-8">
           Create your account
         </h2>
-
         {/* Form */}
         <form className="space-y-5">
           <div>

@@ -30,9 +30,13 @@ export default function Navbar() {
         </div>
 
         <ul className="hidden md:flex gap-8 text-[15px] font-medium text-gray-700">
-          <li className="font-semibold text-black cursor-pointer"><Link href="/">Home</Link></li>
-          <li className="hover:text-black cursor-pointer">Men’s</li>
-          <li className="hover:text-black cursor-pointer">Women’s</li>
+          <li className="hover:text-black cursor-pointer">
+            <Link href="/">Home</Link>
+          </li>
+          <li className="hover:text-black cursor-pointer">
+            <Link href="/mens">Men’s</Link>
+          </li>
+          <li className="hover:text-black cursor-pointer"><Link href="/womens">Women’s</Link></li>
           <li className="hover:text-black cursor-pointer">About Us</li>
         </ul>
 
@@ -66,12 +70,16 @@ export default function Navbar() {
           <li className="font-semibold text-black py-2 border-b border-gray-100">
             Home
           </li>
-          <li className="hover:text-black py-2 border-b border-gray-100">
-            Men’s
-          </li>
-          <li className="hover:text-black py-2 border-b border-gray-100">
-            Women’s
-          </li>
+          <Link href="/mens">
+            <li className="hover:text-black py-2 border-b border-gray-100">
+              Men’s
+            </li>
+          </Link>
+          <Link href="/womens">
+            <li className="hover:text-black py-2 border-b border-gray-100">
+              Women’s
+            </li>
+          </Link>
           <li className="hover:text-black py-2">About Us</li>
           <li className="pt-3">
             <Link href="/signup">
