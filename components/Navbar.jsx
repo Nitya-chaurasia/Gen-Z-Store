@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
 import { Search, Heart, ShoppingBag, Menu, X } from "lucide-react";
@@ -9,9 +10,7 @@ export default function Navbar() {
   return (
     <nav className="w-full bg-white shadow-sm border-b border-gray-200">
       <div className="max-w-7xl mx-auto flex justify-between items-center px-6 py-2">
-       
         <div className="flex items-center">
-         
           <Image
             src="/logo-mobile.png"
             alt="Gen-Z Mobile Logo"
@@ -20,7 +19,7 @@ export default function Navbar() {
             className="block md:hidden cursor-pointer"
             priority
           />
-       
+
           <Image
             src="/logo.png"
             alt="Gen-Z Logo"
@@ -30,23 +29,27 @@ export default function Navbar() {
           />
         </div>
 
-     
         <ul className="hidden md:flex gap-8 text-[15px] font-medium text-gray-700">
-          <li className="font-semibold text-black cursor-pointer">Home</li>
-          <li className="hover:text-black cursor-pointer">Men’s</li>
-          <li className="hover:text-black cursor-pointer">Women’s</li>
+          <li className="hover:text-black cursor-pointer">
+            <Link href="/">Home</Link>
+          </li>
+          <li className="hover:text-black cursor-pointer">
+            <Link href="/mens">Men’s</Link>
+          </li>
+          <li className="hover:text-black cursor-pointer"><Link href="/womens">Women’s</Link></li>
           <li className="hover:text-black cursor-pointer">About Us</li>
         </ul>
 
-        
         <div className="flex items-center gap-5">
           <Search className="w-5 h-5 text-gray-700 cursor-pointer" />
           <Heart className="w-5 h-5 text-gray-700 cursor-pointer" />
           <ShoppingBag className="w-5 h-5 text-gray-700 cursor-pointer" />
 
-          <button className="hidden md:inline-block px-5 py-3 text-sm font-medium text-white bg-blue-600 rounded hover:bg-blue-700">
-            Sign Up
-          </button>
+          <Link href="/signup">
+            <button className="hidden md:inline-block px-5 py-3 text-sm font-medium text-white bg-blue-600 rounded hover:bg-blue-700">
+              Sign Up
+            </button>
+          </Link>
 
           <button
             aria-label="Toggle menu"
@@ -64,14 +67,26 @@ export default function Navbar() {
         }`}
       >
         <ul className="flex flex-col gap-2 px-6 pb-4 pt-2 text-[15px] font-medium text-gray-700">
-          <li className="font-semibold text-black py-2 border-b border-gray-100">Home</li>
-          <li className="hover:text-black py-2 border-b border-gray-100">Men’s</li>
-          <li className="hover:text-black py-2 border-b border-gray-100">Women’s</li>
+          <li className="font-semibold text-black py-2 border-b border-gray-100">
+            Home
+          </li>
+          <Link href="/mens">
+            <li className="hover:text-black py-2 border-b border-gray-100">
+              Men’s
+            </li>
+          </Link>
+          <Link href="/womens">
+            <li className="hover:text-black py-2 border-b border-gray-100">
+              Women’s
+            </li>
+          </Link>
           <li className="hover:text-black py-2">About Us</li>
           <li className="pt-3">
-            <button className="w-full px-5 py-3 text-sm font-medium text-white bg-blue-600 rounded hover:bg-blue-700">
-              Sign Up
-            </button>
+            <Link href="/signup">
+              <button className="w-full px-5 py-3 text-sm font-medium text-white bg-blue-600 rounded hover:bg-blue-700">
+                Sign Up
+              </button>
+            </Link>
           </li>
         </ul>
       </div>

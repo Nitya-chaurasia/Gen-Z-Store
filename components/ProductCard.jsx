@@ -1,5 +1,6 @@
 "use client";
 import { Star } from "lucide-react";
+
 export default function ProductCard({
   image,
   tag,
@@ -10,6 +11,16 @@ export default function ProductCard({
   discount,
   rating,
 }) {
+  // Automatically calculate old price & discount if not provided
+  const parsedPrice = parseFloat(price.replace(/[₹,]/g, "")); // remove ₹ and commas
+  const autoOldPrice = oldPrice
+    ? parseFloat(oldPrice.replace(/[₹,]/g, ""))
+    : Math.round(parsedPrice * 1.8); // 80% higher by default
+
+  const autoDiscount = discount
+    ? discount
+    : `${Math.round(((autoOldPrice - parsedPrice) / autoOldPrice) * 100)}% OFF`;
+
   return (
     <div className="w-full max-w-[280px] sm:max-w-[300px] md:max-w-none bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden group flex flex-col">
       <div className="relative w-full aspect-[3/4] @max-sm:aspect-[2/3] overflow-hidden">
@@ -65,18 +76,14 @@ export default function ProductCard({
         </p>
         <div className="mt-2 flex items-center gap-2">
           <span className="text-base sm:text-lg font-bold text-gray-900">
-            ₹{price}
+            ₹{parsedPrice}
           </span>
-          {oldPrice && (
-            <span className="text-gray-400 line-through text-[11px] sm:text-sm">
-              ₹{oldPrice}
-            </span>
-          )}
-          {discount && (
-            <span className="text-green-600 text-[11px] sm:text-sm font-semibold">
-              {discount}
-            </span>
-          )}
+          <span className="text-gray-400 line-through text-[11px] sm:text-sm">
+            ₹{autoOldPrice}
+          </span>
+          <span className="text-green-600 text-[11px] sm:text-sm font-semibold">
+            {autoDiscount}
+          </span>
         </div>
       </div>
     </div>
